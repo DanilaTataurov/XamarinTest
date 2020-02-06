@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:XamarinTest.ViewModels;assembly=XamarinTest"
+             mc:Ignorable="d"
+             x:Class="XamarinTest.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Log in" TextColor="Black"/>
+            <Entry x:Name="emailEntry" Text="{Binding Username}" Placeholder="Email" FontSize="Medium" />
+            <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="True" FontSize="Medium" />
+            <Button x:Name="login" Text="Sign in" Command="{Binding LoginCommand}"/>
+
+            <Label LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Sign up">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

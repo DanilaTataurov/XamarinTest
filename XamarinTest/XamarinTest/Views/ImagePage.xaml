@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:XamarinTest.ViewModels;assembly=XamarinTest"
+             mc:Ignorable="d"
+             x:Class="XamarinTest.Views.ImagePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Logout">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" Command="{Binding TakePhotoCommand}" />
+                <ListView x:Name="MyListView"
+                          ItemsSource="{Binding Images}"
+                          HasUnevenRows="True"
+                          SelectionMode="None"
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <!--<Image Source="{Binding ImageSource}"/>-->
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Latitude}"/>
+                                    <Label Text="{Binding Longitude}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
